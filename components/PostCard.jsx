@@ -4,7 +4,7 @@ export default function PostCard({ post, setFilter, filter }) {
   return (
     <article className="group flex gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow">
       {/* サムネイル */}
-      <div className="w-32 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-slate-100">
+      <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-slate-100">
         <img
           src={post.thumbnail ?? "/images/no-image.png"}
           alt={post.title}
