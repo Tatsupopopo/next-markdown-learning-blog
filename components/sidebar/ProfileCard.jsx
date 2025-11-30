@@ -6,7 +6,7 @@ export default function ProfileCard() {
     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
       {/* プロフィール画像 */}
       <div className="w-20 h-20 mx-auto rounded-full bg-slate-200 overflow-hidden mb-3">
-        {/* 必要なら <img src="/images/profile.jpg" /> に変更 */}
+        <img src="/images/profile.jpg" className="object-cover h-20 w-20"/>
       </div>
 
       {/* 名前 */}
@@ -17,7 +17,7 @@ export default function ProfileCard() {
       {/* SNSアイコン */}
       <div className="flex justify-center gap-4 mt-4">
         <a
-          href="https://x.com/yourname"
+          href="https://x.com/eatingMikan"
           target="_blank"
           rel="noopener noreferrer"
           className="text-slate-500 hover:text-black transition-colors text-xl"
@@ -27,7 +27,7 @@ export default function ProfileCard() {
         </a>
 
         <a
-          href="https://github.com/yourname"
+          href="https://github.com/Tatsupopopo"
           target="_blank"
           rel="noopener noreferrer"
           className="text-slate-500 hover:text-slate-900 transition-colors text-xl"
@@ -37,7 +37,7 @@ export default function ProfileCard() {
         </a>
 
         <a
-          href="https://qiita.com/yourname"
+          href="https://qiita.com/Tatsupopopo"
           target="_blank"
           rel="noopener noreferrer"
           className="text-slate-500 hover:text-[#55c500] transition-colors text-xl"
