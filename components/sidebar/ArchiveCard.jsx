@@ -5,7 +5,7 @@ export default function ArchiveCard({ posts, setFilter }) {
 
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm space-y-2">
-      <h2 className="text-sm font-semibold text-slate-800">投稿月一覧</h2>
+      <h2 className="text-sm font-semibold text-slate-800">アーカイブ</h2>
       <ul className="text-sm space-y-1">
         {months.map((m) => (
           <li key={m}>
