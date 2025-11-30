@@ -25,7 +25,7 @@ export default function HomeClient({ posts }) {
             ? filter.type === "tag"
               ? `# ${filter.value} の記事`
               : `${filter.value} の記事`
-            : "Learning Blog"}
+            : "記事一覧"}
         </h1>
 
         {filter && (
