@@ -47,6 +47,20 @@ body {
 .prose-custom a:hover {
   @apply text-sky-700 decoration-sky-400;
 }
+.prose-custom figure.blog-figure {
+  margin: 1.5rem auto;
+  text-align: center;
+}
+.prose-custom figure.blog-figure img {
+  @apply rounded-xl border border-slate-200 shadow-sm;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+.prose-custom figure.blog-figure figcaption {
+  @apply mt-2 text-sm text-slate-500;
+}
 html {
   overflow-y: scroll;
 }
