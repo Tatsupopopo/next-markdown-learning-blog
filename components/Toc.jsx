@@ -1,32 +1,55 @@
 "use client";
+
 import { useEffect, useState } from "react";
+import slugify from "slugify";
 
 export default function Toc({ html }) {
   const [headings, setHeadings] = useState([]);
 
+  // ① Markdown HTML から見出し（h2/h3）を抜き出す
   useEffect(() => {
-    // markdownからh2/h3を抽出
+    if (!html) {
+      setHeadings([]);
+      return;
+    }
+
     const container = document.createElement("div");
     container.innerHTML = html;
-    const hs = Array.from(container.querySelectorAll("h2, h3")).map((el) => ({
-      text: el.textContent,
-      id:
-        el.id ||
-        el.textContent
-          ?.replace(/[\s　]+/g, "-")
-          .replace(/[^\w\-]/g, "")
-          .toLowerCase(),
-      level: el.tagName === "H2" ? 2 : 3,
-    }));
+
+    const nodes = Array.from(container.querySelectorAll("h2, h3"));
+
+    const hs = nodes.map((el, index) => {
+      const text = (el.textContent || "").trim();
+
+      // ★ 日本語を含めテキストそのままをベースにする
+      //   - 空白だけ "-" に変換
+      //   - 何も残らなければ "heading-0" みたいなフォールバック
+      const base = text.replace(/\s+/g, "-");
+      const id = base.length > 0 ? base : `heading-${index}`;
+
+      return {
+        index,
+        text,
+        id,
+        level: el.tagName === "H2" ? 2 : 3,
+      };
+    });
+
     setHeadings(hs);
   }, [html]);
 
-  // 本文側の見出し要素にIDを付与（リンクジャンプ用）
+  // ② 実際の記事本文の h2/h3 に ID を振る
   useEffect(() => {
+    if (!headings.length) return;
+
+    const article = document.querySelector("article");
+    if (!article) return;
+
+    const articleHeadings = Array.from(article.querySelectorAll("h2, h3"));
+
     headings.forEach((h) => {
-      const el = document.getElementById(h.id);
-      if (!el) return;
-      el.id = h.id;
+      const el = articleHeadings[h.index];
+      if (el) el.id = h.id;
     });
   }, [headings]);
 
