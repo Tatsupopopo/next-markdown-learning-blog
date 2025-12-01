@@ -6,6 +6,7 @@ import { Noto_Sans_JP } from "next/font/google";
 
 import Script from "next/script";
 import GoogleAnalyticsListener from "../components/GoogleAnalyticsListener";
+import { Suspense } from "react";
 
 const notoSans = Noto_Sans_JP({
   subsets: ["latin"],
@@ -72,8 +73,11 @@ export default function RootLayout({ children }) {
       </head>
       <body className="min-h-screen flex flex-col">
         <Header />
-        {/* 👇 ここでルーティング変化を監視 */}
-        <GoogleAnalyticsListener />
+
+        <Suspense fallback={null}>
+          <GoogleAnalyticsListener />
+        </Suspense>
+
         <main className="flex-1 main-container py-8">{children}</main>
         <Footer />
       </body>
