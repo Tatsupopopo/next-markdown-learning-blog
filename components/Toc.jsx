@@ -58,7 +58,7 @@ export default function Toc({ html }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
       <h2 className="text-sm font-semibold text-slate-800 mb-2">目次</h2>
-      <ul className="space-y-1 text-sm">
+      <ul className="space-y-1 text-xs">
         {headings.map((h) => (
           <li key={h.id} className={h.level === 3 ? "ml-4" : ""}>
             <a
