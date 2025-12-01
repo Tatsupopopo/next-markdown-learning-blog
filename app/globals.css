@@ -21,6 +21,10 @@ body {
 .prose-custom h3 {
   @apply mt-8 mb-3 pl-3 text-lg font-semibold border-l-4 border-slate-200;
 }
+.prose-custom h2,
+.prose-custom h3 {
+  scroll-margin-top: 4.5rem;
+}
 .prose-custom p {
   @apply leading-relaxed mb-4 text-sm;
 }
@@ -28,8 +32,8 @@ body {
   @apply list-disc pl-6 mb-4 text-sm;
 }
 .prose-custom ul li::marker {
-  font-size: 0.6em; /* 黒丸の大きさだけ小さくする */
-  color: #64748b; /* ちょっとグレー寄りに（お好みで） */
+  font-size: 0.6em;
+  color: #64748b;
 }
 .prose-custom code {
   @apply px-1 py-0.5 rounded bg-slate-800 text-slate-100 text-sm;
