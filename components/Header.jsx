@@ -2,16 +2,29 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-
+import { useState, useEffect } from "react"; // 👈 useEffect 追加
 import { FiMenu, FiX } from "react-icons/fi";
 
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
+  // 👇 open の状態に応じて body にクラスを付け外しする
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add("menu-open");
+    } else {
+      document.body.classList.remove("menu-open");
+    }
+
+    // 万が一アンマウントされたときの掃除
+    return () => {
+      document.body.classList.remove("menu-open");
+    };
+  }, [open]);
+
   const linkClass = (path) =>
-    `text-sm font-medium ${
+    `text-base font-medium ${
       pathname === path
         ? "text-slate-900"
         : "text-slate-500 hover:text-slate-900"
@@ -25,14 +38,14 @@ export default function Header() {
           <img
             src="/images/Blog_logo.png"
             alt="Logo"
-            className="w-8 h-8 object-contain" // サイズ調整
+            className="w-8 h-8 object-contain"
           />
           <span className="text-lg font-semibold tracking-tight">
             Web と読書とゲームと
           </span>
         </Link>
 
-        {/* 右：ナビゲーション */}
+        {/* 右：ナビゲーション（PC） */}
         <nav className="hidden md:flex items-center gap-4 ml-auto">
           <Link href="/" className={linkClass("/")}>
             Blog
@@ -53,9 +66,9 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-30 bg-black/40 md:hidden flex justify-end">
-          {/* 👇 h-full → h-screen に変更 */}
-          <div className="h-screen w-64 bg-white shadow-xl flex flex-col">
+        <div className="fixed inset-0 z-30 md:hidden flex justify-end">
+          <div className="h-screen w-40 bg-white shadow-xl flex flex-col">
+            {/* 上部バー */}
             <div className="flex items-center justify-between px-4 py-5 border-b border-slate-200">
               <span className="text-lg font-semibold">Menu</span>
               <button
@@ -67,6 +80,7 @@ export default function Header() {
               </button>
             </div>
 
+            {/* 中身 */}
             <nav className="flex-1 flex flex-col gap-3 px-4 py-4 bg-white overflow-y-auto">
               <Link
                 href="/"
@@ -82,21 +96,6 @@ export default function Header() {
               >
                 About
               </Link>
-
-              <div className="h-px bg-slate-200 my-3" />
-
-              <button
-                type="button"
-                className="px-3 py-2 text-left text-sm text-slate-600 hover:bg-slate-50 rounded-lg"
-              >
-                タグ一覧
-              </button>
-              <button
-                type="button"
-                className="mt-1 px-3 py-2 text-left text-sm text-slate-600 hover:bg-slate-50 rounded-lg"
-              >
-                投稿月一覧
-              </button>
             </nav>
           </div>
         </div>

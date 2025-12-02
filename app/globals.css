@@ -5,6 +5,12 @@
 body {
   @apply bg-slate-50 text-slate-900;
 }
+body.menu-open {
+  overflow: hidden;
+}
+body.menu-open main {
+  pointer-events: none;
+}
 .main-container {
   @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
 }
