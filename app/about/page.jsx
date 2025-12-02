@@ -8,7 +8,7 @@ export default function AboutPage() {
       <h1 className="text-3xl font-bold">当サイトについて</h1>
 
       {/* 2カラム構成 */}
-      <div className="flex flex-col lg:flex-row gap-10 items-start">
+      <div className="flex flex-col lg:flex-row gap-10 items-center lg:items-start">
         {/* 左カラム：画像 + SNS */}
         <div className="flex flex-col items-center gap-4 shrink-0">
           {/* 画像のサイズ・形はそのまま */}
@@ -19,7 +19,9 @@ export default function AboutPage() {
           />
 
           <h2 className="text-center text-sm font-semibold text-slate-800">
-            Tatsupopopo<br/>（Tatsuki Yotsushima）
+            Tatsupopopo
+            <br />
+            （Tatsuki Yotsushima）
           </h2>
 
           {/* SNS icons */}
