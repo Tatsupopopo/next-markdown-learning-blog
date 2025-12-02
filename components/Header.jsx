@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <header className="border-b border-slate-200 bg-white/80 backdrop-blur sticky top-0 z-20">
-      <div className="main-container flex items-center py-3">
+      <div className="main-container flex items-center h-[68px]">
         {/* 左：サイトタイトル */}
         <Link href="/" className="flex items-center gap-2">
           <img
@@ -53,10 +53,11 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-30 bg-black/40 md:hidden">
-          <div className="ml-auto h-full w-64 bg-white shadow-xl flex flex-col">
-            <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200">
-              <span className="text-sm font-semibold">Menu</span>
+        <div className="fixed inset-0 z-30 bg-black/40 md:hidden flex justify-end">
+          {/* 👇 h-full → h-screen に変更 */}
+          <div className="h-screen w-64 bg-white shadow-xl flex flex-col">
+            <div className="flex items-center justify-between px-4 py-5 border-b border-slate-200">
+              <span className="text-lg font-semibold">Menu</span>
               <button
                 onClick={() => setOpen(false)}
                 className="p-1 rounded hover:bg-slate-100"
@@ -66,7 +67,7 @@ export default function Header() {
               </button>
             </div>
 
-            <nav className="flex flex-col gap-3 px-4 py-4">
+            <nav className="flex-1 flex flex-col gap-3 px-4 py-4 bg-white overflow-y-auto">
               <Link
                 href="/"
                 onClick={() => setOpen(false)}
@@ -82,7 +83,20 @@ export default function Header() {
                 About
               </Link>
 
-              {/* 👇 この下に Sidebar 相当を入れる余地あり（後でやる） */}
+              <div className="h-px bg-slate-200 my-3" />
+
+              <button
+                type="button"
+                className="px-3 py-2 text-left text-sm text-slate-600 hover:bg-slate-50 rounded-lg"
+              >
+                タグ一覧
+              </button>
+              <button
+                type="button"
+                className="mt-1 px-3 py-2 text-left text-sm text-slate-600 hover:bg-slate-50 rounded-lg"
+              >
+                投稿月一覧
+              </button>
             </nav>
           </div>
         </div>
