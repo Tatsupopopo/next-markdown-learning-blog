@@ -46,7 +46,7 @@ export default async function BlogPostPage({ params }) {
       {/* 本文 + サイドバーの 2 カラム */}
       <div className="grid gap-8 lg:grid-cols-[minmax(0,2.4fr),minmax(260px,1fr)]">
         <article
-          className="prose-custom" // ★ ここに max-w-* や mx-auto は付けない
+          className="prose-custom min-w-0"
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
         <aside className="space-y-4">
