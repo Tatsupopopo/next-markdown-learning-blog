@@ -51,7 +51,7 @@ export default async function BlogPostPage({ params }) {
         />
         <aside className="space-y-4">
           <ProfileCard />
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Toc html={post.contentHtml} />
           </div>
         </aside>
