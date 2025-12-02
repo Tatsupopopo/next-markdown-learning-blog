@@ -45,7 +45,10 @@ body.menu-open main {
   @apply px-1 py-0.5 rounded bg-slate-800 text-slate-100 text-sm;
 }
 .prose-custom pre {
-  @apply bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-sm mb-4;
+  @apply bg-slate-900 text-slate-100 p-4 rounded-lg text-sm mb-4;
+  overflow-x: auto; /* ここはそのまま */
+  max-width: 100%; /* 親をはみ出さない */
+  box-sizing: border-box;
 }
 .prose-custom a {
   @apply text-sky-600 underline underline-offset-2 decoration-sky-300;
