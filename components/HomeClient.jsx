@@ -39,12 +39,14 @@ export default function HomeClient({ posts }) {
       </header>
 
       {/* ↓↓↓ ここからが 2カラムのグリッドレイアウト ↓↓↓ */}
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,2.4fr),minmax(260px,1fr)]">
+      <div className="grid gap-8 md:grid-cols-[minmax(0,2.4fr),minmax(260px,1fr)]">
         {/* 記事一覧 */}
         <PostList posts={visiblePosts} setFilter={setFilter} filter={filter} />
 
         {/* サイドバー */}
-        <Sidebar posts={posts} setFilter={setFilter} filter={filter} />
+        <div className="hidden md:block">
+          <Sidebar posts={posts} setFilter={setFilter} filter={filter} />
+        </div>
       </div>
     </div>
   );

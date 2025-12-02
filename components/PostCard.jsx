@@ -24,9 +24,13 @@ export default function PostCard({ post, setFilter, filter }) {
           {post.description}
         </p>
 
-        <div className="flex items-center justify-between mt-auto pt-1">
+        {/* 日付＋タグ */}
+        <div className="mt-auto pt-1 md:flex md:items-center md:justify-between">
+          {/* 日付 */}
           <p className="text-xs text-slate-500">{post.date}</p>
-          <div className="flex flex-wrap gap-1">
+
+          {/* タグ */}
+          <div className="flex flex-wrap gap-1 mt-1 justify-end md:mt-0">
             {post.tags?.map((tag) => (
               <button
                 key={tag}
